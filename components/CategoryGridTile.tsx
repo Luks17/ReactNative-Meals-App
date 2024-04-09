@@ -1,14 +1,26 @@
-import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  GestureResponderEvent,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 interface Props {
   categoryTitle: string;
   categoryColor: string;
+  onPress: (e?: GestureResponderEvent) => void;
 }
 
-function CategoryGridTile({ categoryTitle, categoryColor }: Props) {
+function CategoryGridTile({ categoryTitle, categoryColor, onPress }: Props) {
   return (
     <View style={[styles.tileContainer, { backgroundColor: categoryColor }]}>
-      <Pressable android_ripple={{ color: "ccc" }} style={styles.useAllSpace}>
+      <Pressable
+        onPress={onPress}
+        android_ripple={{ color: "ccc" }}
+        style={styles.useAllSpace}
+      >
         <View style={styles.innerContainer}>
           <Text style={styles.title}>{categoryTitle}</Text>
         </View>

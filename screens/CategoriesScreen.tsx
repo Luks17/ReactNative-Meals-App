@@ -1,8 +1,21 @@
 import { FlatList } from "react-native";
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryGridTile from "../components/CategoryGridTile";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-function CategoriesScreen() {
+type RootStackParamList = {
+  Home: undefined;
+  MealsCategories: { title: string; colors: string }[];
+  MealsOverview: {};
+};
+
+type Props = NativeStackScreenProps<RootStackParamList, "MealsCategories">;
+
+function CategoriesScreen({ navigation }: Props) {
+  function pressHandler() {
+    navigation.navigate("MealsOverview", {});
+  }
+
   return (
     <FlatList
       data={CATEGORIES}
@@ -12,6 +25,7 @@ function CategoriesScreen() {
         <CategoryGridTile
           categoryTitle={item.title}
           categoryColor={item.color}
+          onPress={pressHandler}
         />
       )}
     />
