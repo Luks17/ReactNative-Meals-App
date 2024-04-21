@@ -1,9 +1,25 @@
-import { StyleSheet, Text, View } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { FlatList, StyleSheet, View } from "react-native";
+import { RootStackParamList } from "../constants/stack";
+import { MEALS } from "../data/dummy-data";
+import MealItem from "../components/MealItem";
 
-function MealsOverviewScreen() {
+type Props = NativeStackScreenProps<RootStackParamList, "MealsOverview">;
+
+function MealsOverviewScreen({ route }: Props) {
+  const categoryId = route.params.id;
+
+  const mealsOfCategory = MEALS.filter((meal) =>
+    meal.categoryIds.includes(categoryId)
+  );
+
   return (
     <View style={styles.container}>
-      <Text>Meals Overview</Text>
+      <FlatList
+        data={mealsOfCategory}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <MealItem title={item.title} />}
+      />
     </View>
   );
 }

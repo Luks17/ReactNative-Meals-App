@@ -1,10 +1,8 @@
 import CategoriesScreen from "./screens/CategoriesScreen";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
-
-const Stack = createNativeStackNavigator();
+import { Stack } from "./constants/stack";
 
 export default function App() {
   return (
