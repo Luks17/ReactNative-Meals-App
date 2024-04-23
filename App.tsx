@@ -2,7 +2,7 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import MealsOverviewScreen from "./screens/MealsOverviewScreen";
-import { Stack } from "./constants/stack";
+import { Stack } from "./constants/navigators/stack";
 import MealDetailsScreen from "./screens/MealDetailsScreen";
 
 export default function App() {
@@ -32,7 +32,9 @@ export default function App() {
           <Stack.Screen
             name="MealDetails"
             component={MealDetailsScreen}
-            options={({ route }) => ({ title: route.params.title })}
+            options={({ route }) => ({
+              title: route.params.title,
+            })}
           />
         </Stack.Navigator>
       </NavigationContainer>

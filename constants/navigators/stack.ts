@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Category from "../models/category";
-import Meal from "../models/meal";
+import Category from "../../models/category";
+import Meal from "../../models/meal";
 
 export type RootStackParamList = {
   Home: undefined;
